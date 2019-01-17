@@ -1,4 +1,4 @@
-cost Yaejs = (function () {
+const Yaejs = (function() {
   function escapeHtml(r) {
     return String(r)
       .replace(/&(?!\w+;)/g, '&amp;')
@@ -6,7 +6,7 @@ cost Yaejs = (function () {
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
   }
-  
+
   const TokenTypes = {
     PUTS: 'PUTS',
     ESCAPEPUTS: 'ESCAPEPUTS',
@@ -14,7 +14,7 @@ cost Yaejs = (function () {
     HTML: 'HTML',
     EOF: 'EOF'
   };
-  
+
   class Token {
     constructor(Type, Value, At, Lineat, Lineno) {
       this.Type = Type;
@@ -24,7 +24,7 @@ cost Yaejs = (function () {
       this.Lineno = Lineno;
     }
   }
-  
+
   class Lexer {
     constructor(html) {
       if (typeof html !== 'string') {
@@ -74,9 +74,9 @@ cost Yaejs = (function () {
               Value += this.ch;
               this.readChar();
             }
-  
+
             this.readChar();
-  
+
             tok = new Token(TokenTypes.ESCAPEPUTS, Value, At, Lineat, Lineno);
             break;
           }
@@ -90,9 +90,9 @@ cost Yaejs = (function () {
               Value += this.ch;
               this.readChar();
             }
-  
+
             this.readChar();
-  
+
             tok = new Token(TokenTypes.PUTS, Value, At, Lineat, Lineno);
             break;
           }
@@ -132,7 +132,7 @@ cost Yaejs = (function () {
       return false;
     }
   }
-  
+
   function rethrow(err, lineat, lineno, filename) {
     err.path = filename;
     err.message =
@@ -142,7 +142,7 @@ cost Yaejs = (function () {
       );
     throw err;
   }
-  
+
   const Yaejs = {
     parse(html) {
       const l = new Lexer(html);
@@ -197,4 +197,3 @@ cost Yaejs = (function () {
   };
   return Yaejs;
 })();
-
