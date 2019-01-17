@@ -1,0 +1,22 @@
+{
+  "name": "yaejs",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "template"
+  ],
+  "author": "Liu Chaofan",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.90.0",
+    "webpack": "^3.12.0"
+  }
+}
